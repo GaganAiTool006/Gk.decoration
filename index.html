@@ -262,23 +262,23 @@
         <h2 class="font-display font-bold text-3xl md:text-4xl mt-3" style="color:var(--navy);">A Setup for Every Celebration</h2>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-5 mt-12">
-        <button onclick="goTo('services')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
+        <button onclick="openCategoryModal('birthday')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
           <div class="h-32" style="background:url('https://images.pexels.com/photos/34008663/pexels-photo-34008663.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
           <div class="p-4"><h3 class="font-semibold" style="color:var(--navy);">Birthday Party</h3><p class="text-xs text-gray-500 mt-1">Kids &amp; milestone themes</p></div>
         </button>
-        <button onclick="goTo('services')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
+        <button onclick="openCategoryModal('wedding')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
           <div class="h-32" style="background:url('https://images.pexels.com/photos/33417236/pexels-photo-33417236.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
           <div class="p-4"><h3 class="font-semibold" style="color:var(--navy);">Wedding &amp; Ring Ceremony</h3><p class="text-xs text-gray-500 mt-1">Mandap, stage &amp; canopy</p></div>
         </button>
-        <button onclick="goTo('services')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
+        <button onclick="openCategoryModal('babyshower')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
           <div class="h-32" style="background:url('https://images.pexels.com/photos/34154245/pexels-photo-34154245.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
           <div class="p-4"><h3 class="font-semibold" style="color:var(--navy);">Baby Shower</h3><p class="text-xs text-gray-500 mt-1">Pastel &amp; gender reveal</p></div>
         </button>
-        <button onclick="goTo('services')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
+        <button onclick="openCategoryModal('anniversary')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
           <div class="h-32" style="background:url('https://images.pexels.com/photos/19763210/pexels-photo-19763210.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
           <div class="p-4"><h3 class="font-semibold" style="color:var(--navy);">Anniversary</h3><p class="text-xs text-gray-500 mt-1">Candlelight &amp; romantic</p></div>
         </button>
-        <button onclick="goTo('services')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
+        <button onclick="openCategoryModal('theme')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
           <div class="h-32" style="background:url('https://images.pexels.com/photos/7548036/pexels-photo-7548036.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
           <div class="p-4"><h3 class="font-semibold" style="color:var(--navy);">Theme Parties</h3><p class="text-xs text-gray-500 mt-1">Custom concept builds</p></div>
         </button>
@@ -668,6 +668,23 @@
   </section>
 </main>
 
+<!-- CATEGORY DETAILS MODAL -->
+<div id="categoryModalOverlay" class="fixed inset-0 z-[60] hidden items-center justify-center p-4" style="background:rgba(22,27,51,0.6);backdrop-filter:blur(2px);" onclick="closeCategoryModal(event)">
+  <div class="bg-white rounded-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto relative" onclick="event.stopPropagation()">
+    <button onclick="closeCategoryModal()" aria-label="Close" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/90 shadow flex items-center justify-center">
+      <svg width="18" height="18" fill="none" stroke="var(--navy)" stroke-width="2"><path d="M1 1l16 16M17 1L1 17"/></svg>
+    </button>
+    <div id="modalImage" class="h-48 rounded-t-2xl"></div>
+    <div class="p-7">
+      <p id="modalEyebrow" class="uppercase tracking-[0.2em] text-xs font-semibold mb-2" style="color:var(--rosegold);"></p>
+      <h3 id="modalTitle" class="font-display font-bold text-2xl" style="color:var(--navy);"></h3>
+      <p id="modalDesc" class="text-sm text-gray-600 mt-3 leading-relaxed"></p>
+      <ul id="modalFeatures" class="mt-4 space-y-1.5 text-sm text-gray-600"></ul>
+      <button onclick="goTo('contact'); closeCategoryModal();" class="btn-gold mt-7 px-7 py-3 rounded-full text-sm font-medium">Get Quote</button>
+    </div>
+  </div>
+</div>
+
 <!-- WHATSAPP STICKY BUTTON -->
 <a href="https://wa.me/919876543210?text=Hi!%20I'd%20like%20a%20free%20quote%20for%20my%20event." target="_blank" rel="noopener"
    class="whatsapp-fab fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center"
@@ -716,6 +733,95 @@
 </footer>
 
 <script>
+  const categoryDetails = {
+    birthday: {
+      eyebrow: 'Birthday Party',
+      title: 'Birthday Party Decoration',
+      image: "url('https://images.pexels.com/photos/34008663/pexels-photo-34008663.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat",
+      desc: "Kids' theme parties, milestone 18th/21st birthdays, balloon arches and photo-ready backdrops — designed around the birthday star.",
+      features: [
+        'Custom character &amp; theme setups',
+        'Balloon arches &amp; garlands',
+        'Personalized backdrop with name/age',
+        'Table &amp; return-gift styling'
+      ]
+    },
+    wedding: {
+      eyebrow: 'Wedding &amp; Ring Ceremony',
+      title: 'Weddings &amp; Pre-Wedding Events',
+      image: "url('https://images.pexels.com/photos/33417236/pexels-photo-33417236.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat",
+      desc: 'Haldi, Mehendi, Ring Ceremony, and full mandap, canopy &amp; stage decoration for your big day.',
+      features: [
+        'Haldi &amp; Mehendi themed setups',
+        'Ring ceremony stage decor',
+        'Mandap, canopy &amp; entrance decor',
+        'Floral, drape &amp; lighting design'
+      ]
+    },
+    babyshower: {
+      eyebrow: 'Baby Shower',
+      title: 'Baby Shower &amp; Gender Reveal',
+      image: "url('https://images.pexels.com/photos/34154245/pexels-photo-34154245.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat",
+      desc: 'Soft pastel palettes, customized props and balloon backdrops built for the mom-to-be.',
+      features: [
+        'Pastel balloon backdrops',
+        'Gender reveal pop &amp; confetti setups',
+        'Custom props &amp; welcome boards',
+        'Seating &amp; dessert table styling'
+      ]
+    },
+    anniversary: {
+      eyebrow: 'Anniversary',
+      title: 'Anniversary &amp; Romantic Setups',
+      image: "url('https://images.pexels.com/photos/19763210/pexels-photo-19763210.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat",
+      desc: 'Candlelight dinners, in-room decorations and thoughtful surprise setups for the two of you.',
+      features: [
+        'Candlelight dinner arrangements',
+        'In-room &amp; balcony decoration',
+        'Surprise proposal setups',
+        'Rose petals, fairy lights &amp; florals'
+      ]
+    },
+    theme: {
+      eyebrow: 'Theme Parties',
+      title: 'Custom Theme Parties',
+      image: "url('https://images.pexels.com/photos/7548036/pexels-photo-7548036.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat",
+      desc: "Have a concept in mind? We design and build fully custom theme parties around it — from kids' fantasy themes to adult concept nights.",
+      features: [
+        'Concept design &amp; mood boards',
+        'Custom props &amp; backdrops',
+        'Coordinated lighting &amp; music zones',
+        'Full setup &amp; teardown included'
+      ]
+    }
+  };
+
+  function openCategoryModal(key){
+    const data = categoryDetails[key];
+    if(!data) return;
+    document.getElementById('modalImage').style.background = data.image;
+    document.getElementById('modalEyebrow').innerHTML = data.eyebrow;
+    document.getElementById('modalTitle').innerHTML = data.title;
+    document.getElementById('modalDesc').innerHTML = data.desc;
+    document.getElementById('modalFeatures').innerHTML = data.features.map(f => `<li>• ${f}</li>`).join('');
+    const overlay = document.getElementById('categoryModalOverlay');
+    overlay.classList.remove('hidden');
+    overlay.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCategoryModal(e){
+    if(e && e.target !== e.currentTarget) return;
+    const overlay = document.getElementById('categoryModalOverlay');
+    overlay.classList.add('hidden');
+    overlay.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeCategoryModal();
+  });
+
   function goTo(pageId){
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById(pageId).classList.add('active');
