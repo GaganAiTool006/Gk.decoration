@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aapke Business Ka Naam | Party & Wedding Decoration</title>
+<meta name="description" content="Custom party, wedding & event decoration. Themes, balloon arches, mandap & backdrop setups. Book a free quote today.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#161B33;
+    --navy-light:#232a52;
+    --gold:#C9A227;
+    --gold-soft:#E4C766;
+    --rosegold:#B76E79;
+    --blush:#FBE4E4;
+    --cream:#FFFBF3;
+    --ink:#2b2440;
+  }
+  *{ scroll-behavior:smooth; }
+  body{
+    font-family:'Poppins', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+  }
+  .font-display{ font-family:'Playfair Display', serif; }
+
+  /* Scalloped marigold-garland divider — signature element */
+  .garland{
+    height:26px;
+    width:100%;
+    background-image: radial-gradient(circle at 10px 0px, transparent 12px, var(--gold) 12.5px 13px, transparent 13.5px);
+    background-size: 26px 26px;
+    background-repeat: repeat-x;
+    background-position: top center;
+    opacity:0.9;
+  }
+  .garland.flip{ transform: rotate(180deg); }
+  .garland-rose{
+    background-image: radial-gradient(circle at 10px 0px, transparent 12px, var(--rosegold) 12.5px 13px, transparent 13.5px);
+  }
+
+  /* Draped fabric top border for hero — mandap drape motif */
+  .drape-top{
+    position:relative;
+  }
+  .drape-top::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:60px;
+    background:
+      radial-gradient(circle at 8% 0%, transparent 26px, var(--cream) 27px),
+      radial-gradient(circle at 24% 0%, transparent 26px, var(--cream) 27px),
+      radial-gradient(circle at 40% 0%, transparent 26px, var(--cream) 27px),
+      radial-gradient(circle at 56% 0%, transparent 26px, var(--cream) 27px),
+      radial-gradient(circle at 72% 0%, transparent 26px, var(--cream) 27px),
+      radial-gradient(circle at 88% 0%, transparent 26px, var(--cream) 27px),
+      radial-gradient(circle at 104% 0%, transparent 26px, var(--cream) 27px);
+    z-index:5;
+  }
+
+  .btn-gold{
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+    color:var(--navy);
+    font-weight:600;
+    box-shadow: 0 8px 24px -8px rgba(201,162,39,0.55);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-gold:hover{ transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(201,162,39,0.7); }
+
+  .btn-outline{
+    border:1.5px solid var(--gold);
+    color:var(--navy);
+    transition: all .25s ease;
+  }
+  .btn-outline:hover{ background:var(--gold); color:var(--navy); }
+
+  .nav-link{ position:relative; }
+  .nav-link::after{
+    content:""; position:absolute; left:0; bottom:-4px; height:2px; width:0%;
+    background:var(--gold); transition: width .25s ease;
+  }
+  .nav-link.active::after, .nav-link:hover::after{ width:100%; }
+  .nav-link.active{ color:var(--gold); }
+
+  .page{ display:none; }
+  .page.active{ display:block; animation: fadeIn .5s ease; }
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+
+  .reveal{ opacity:0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  .card-hover{ transition: transform .3s ease, box-shadow .3s ease; }
+  .card-hover:hover{ transform: translateY(-6px); box-shadow: 0 20px 40px -16px rgba(22,27,51,0.25); }
+
+  .star{ color:var(--gold); }
+
+  /* Placeholder "photo" tiles styled like fabric/paper swatches instead of stock photos */
+  .swatch{
+    position:relative;
+    overflow:hidden;
+    border-radius:0.75rem;
+  }
+  .swatch::after{
+    content: attr(data-label);
+    position:absolute; inset:auto 0 0 0;
+    padding:.6rem .9rem;
+    font-size:.72rem;
+    letter-spacing:.04em;
+    color:#fff;
+    background: linear-gradient(to top, rgba(22,27,51,0.75), transparent);
+  }
+
+  .whatsapp-fab{
+    box-shadow: 0 10px 30px -6px rgba(37,211,102,0.6);
+  }
+
+  input:focus, textarea:focus, select:focus{
+    outline:none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,162,39,0.2);
+  }
+
+  ::selection{ background: var(--gold-soft); color:var(--navy); }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ===================== NAVBAR ===================== -->
+<header class="sticky top-0 z-50 bg-cream/95 backdrop-blur border-b border-gold/20" style="background:rgba(255,251,243,0.94);">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+    <button onclick="goTo('home')" class="flex items-center gap-2">
+      <span class="w-9 h-9 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,var(--gold-soft),var(--rosegold));">
+        <span class="text-white font-display font-bold text-sm">A</span>
+      </span>
+      <span class="font-display font-bold text-lg md:text-xl" style="color:var(--navy);">Aapke Business Ka Naam</span>
+    </button>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium" style="color:var(--navy);">
+      <button class="nav-link active" data-page="home" onclick="goTo('home')">Home</button>
+      <button class="nav-link" data-page="about" onclick="goTo('about')">About Us</button>
+      <button class="nav-link" data-page="services" onclick="goTo('services')">Services</button>
+      <button class="nav-link" data-page="contact" onclick="goTo('contact')">Contact</button>
+    </nav>
+
+    <button onclick="goTo('contact')" class="hidden md:inline-flex btn-gold px-5 py-2.5 rounded-full text-sm">Book Now</button>
+
+    <button id="menuBtn" class="md:hidden" onclick="toggleMobileMenu()" aria-label="Open menu">
+      <svg width="26" height="26" fill="none" stroke="var(--navy)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+
+  <div id="mobileMenu" class="hidden md:hidden border-t border-gold/20 bg-white/95 px-5 py-4 flex flex-col gap-3 text-sm font-medium" style="color:var(--navy);">
+    <button class="text-left py-1" data-page="home" onclick="goTo('home')">Home</button>
+    <button class="text-left py-1" data-page="about" onclick="goTo('about')">About Us</button>
+    <button class="text-left py-1" data-page="services" onclick="goTo('services')">Services</button>
+    <button class="text-left py-1" data-page="contact" onclick="goTo('contact')">Contact</button>
+    <button onclick="goTo('contact')" class="btn-gold px-5 py-2.5 rounded-full mt-1 text-center">Book Now</button>
+  </div>
+</header>
+
+<!-- ===================== HOME PAGE ===================== -->
+<main id="home" class="page active">
+
+  <!-- HERO -->
+  <section class="relative drape-top pt-20 pb-24 px-5 md:px-8 overflow-hidden" style="background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 55%, #2a2255 100%);">
+    <!-- ambient glow accents -->
+    <div class="absolute -top-16 -right-16 w-72 h-72 rounded-full opacity-20 blur-3xl" style="background:var(--gold);"></div>
+    <div class="absolute bottom-0 -left-10 w-56 h-56 rounded-full opacity-20 blur-3xl" style="background:var(--rosegold);"></div>
+
+    <div class="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center pt-6">
+      <div class="reveal" data-reveal>
+        <p class="uppercase tracking-[0.25em] text-xs font-semibold mb-4" style="color:var(--gold-soft);">Party &amp; Wedding Decoration Studio</p>
+        <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] text-white">
+          Transforming Your <span style="color:var(--gold-soft);">Celebrations</span> into Unforgettable Memories
+        </h1>
+        <p class="mt-6 text-base md:text-lg text-white/75 max-w-xl">
+          From intimate birthdays to grand wedding mandaps — we design, build and set up every detail, so you can simply enjoy the moment. Ek call mein, poori decoration sambhal lete hain.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-4">
+          <button onclick="goTo('contact')" class="btn-gold px-7 py-3.5 rounded-full text-sm md:text-base">Book Now</button>
+          <button onclick="goTo('services')" class="px-7 py-3.5 rounded-full text-sm md:text-base font-medium border border-white/30 text-white hover:bg-white/10 transition">Explore Packages</button>
+        </div>
+        <div class="mt-10 flex items-center gap-8 text-white/80 text-sm">
+          <div><span class="font-display text-2xl font-bold text-white block">500+</span>Events Decorated</div>
+          <div class="w-px h-10 bg-white/20"></div>
+          <div><span class="font-display text-2xl font-bold text-white block">4.9★</span>Average Rating</div>
+          <div class="w-px h-10 bg-white/20"></div>
+          <div><span class="font-display text-2xl font-bold text-white block">12+</span>Cities Served</div>
+        </div>
+      </div>
+
+      <div class="relative reveal" data-reveal>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="swatch h-52 mt-8" data-label="Wedding Mandap" style="background:url('https://images.pexels.com/photos/34079355/pexels-photo-34079355.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+          <div class="swatch h-40" data-label="Birthday Backdrop" style="background:url('https://images.pexels.com/photos/7548036/pexels-photo-7548036.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+          <div class="swatch h-40" data-label="Baby Shower" style="background:url('https://images.pexels.com/photos/33158035/pexels-photo-33158035.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+          <div class="swatch h-52 mt-[-1rem]" data-label="Anniversary Setup" style="background:url('https://images.pexels.com/photos/11160491/pexels-photo-11160491.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+        </div>
+        <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3 hidden sm:flex">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center" style="background:var(--blush);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rosegold)" stroke-width="2"><path d="M12 21s-7-4.35-9.5-9A5.5 5.5 0 0112 5.5 5.5 5.5 0 0121.5 12c-2.5 4.65-9.5 9-9.5 9z"/></svg>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500">Loved by</p>
+            <p class="font-semibold text-sm" style="color:var(--navy);">500+ Happy Families</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="garland" style="background-color:var(--cream);"></div>
+
+  <!-- WHY CHOOSE US -->
+  <section class="max-w-7xl mx-auto px-5 md:px-8 py-20">
+    <div class="text-center max-w-2xl mx-auto reveal" data-reveal>
+      <p class="uppercase tracking-[0.2em] text-xs font-semibold" style="color:var(--rosegold);">Why Choose Us</p>
+      <h2 class="font-display font-bold text-3xl md:text-4xl mt-3" style="color:var(--navy);">Decoration, Done Right — Every Single Time</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+      <div class="bg-white rounded-2xl p-6 card-hover border border-gold/10 reveal" data-reveal>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:var(--blush);">
+          <svg width="22" height="22" fill="none" stroke="var(--rosegold)" stroke-width="2"><path d="M2 12h18M12 3v18M4 4l14 14M18 4L4 18"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg" style="color:var(--navy);">Customized Themes</h3>
+        <p class="text-sm text-gray-600 mt-2">Every setup is designed around your story, colours and budget — nothing off-the-shelf.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 card-hover border border-gold/10 reveal" data-reveal>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:var(--blush);">
+          <svg width="22" height="22" fill="none" stroke="var(--rosegold)" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg" style="color:var(--navy);">On-Time Setup</h3>
+        <p class="text-sm text-gray-600 mt-2">We arrive early and finish setup well before your guests do — every single time.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 card-hover border border-gold/10 reveal" data-reveal>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:var(--blush);">
+          <svg width="22" height="22" fill="none" stroke="var(--rosegold)" stroke-width="2"><path d="M12 2l2.4 6.9H22l-5.8 4.3 2.2 7L12 16l-6.4 4.2 2.2-7L2 8.9h7.6z"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg" style="color:var(--navy);">Affordable Pricing</h3>
+        <p class="text-sm text-gray-600 mt-2">Transparent packages for every budget, with no hidden charges at the end.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 card-hover border border-gold/10 reveal" data-reveal>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:var(--blush);">
+          <svg width="22" height="22" fill="none" stroke="var(--rosegold)" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg" style="color:var(--navy);">100% Satisfaction</h3>
+        <p class="text-sm text-gray-600 mt-2">From first call to final photo, we stay until you're smiling — guaranteed.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="garland garland-rose" style="background-color:var(--blush);"></div>
+
+  <!-- FEATURED CATEGORIES -->
+  <section class="py-20 px-5 md:px-8" style="background:var(--blush);">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto reveal" data-reveal>
+        <p class="uppercase tracking-[0.2em] text-xs font-semibold" style="color:var(--rosegold);">What We Decorate</p>
+        <h2 class="font-display font-bold text-3xl md:text-4xl mt-3" style="color:var(--navy);">A Setup for Every Celebration</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-5 mt-12">
+        <button onclick="goTo('services')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
+          <div class="h-32" style="background:url('https://images.pexels.com/photos/34008663/pexels-photo-34008663.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+          <div class="p-4"><h3 class="font-semibold" style="color:var(--navy);">Birthday Party</h3><p class="text-xs text-gray-500 mt-1">Kids &amp; milestone themes</p></div>
+        </button>
+        <button onclick="goTo('services')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
+          <div class="h-32" style="background:url('https://images.pexels.com/photos/33417236/pexels-photo-33417236.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+          <div class="p-4"><h3 class="font-semibold" style="color:var(--navy);">Wedding &amp; Ring Ceremony</h3><p class="text-xs text-gray-500 mt-1">Mandap, stage &amp; canopy</p></div>
+        </button>
+        <button onclick="goTo('services')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
+          <div class="h-32" style="background:url('https://images.pexels.com/photos/34154245/pexels-photo-34154245.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+          <div class="p-4"><h3 class="font-semibold" style="color:var(--navy);">Baby Shower</h3><p class="text-xs text-gray-500 mt-1">Pastel &amp; gender reveal</p></div>
+        </button>
+        <button onclick="goTo('services')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
+          <div class="h-32" style="background:url('https://images.pexels.com/photos/19763210/pexels-photo-19763210.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+          <div class="p-4"><h3 class="font-semibold" style="color:var(--navy);">Anniversary</h3><p class="text-xs text-gray-500 mt-1">Candlelight &amp; romantic</p></div>
+        </button>
+        <button onclick="goTo('services')" class="group bg-white rounded-2xl overflow-hidden card-hover text-left reveal" data-reveal>
+          <div class="h-32" style="background:url('https://images.pexels.com/photos/7548036/pexels-photo-7548036.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+          <div class="p-4"><h3 class="font-semibold" style="color:var(--navy);">Theme Parties</h3><p class="text-xs text-gray-500 mt-1">Custom concept builds</p></div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="max-w-7xl mx-auto px-5 md:px-8 py-20">
+    <div class="text-center max-w-2xl mx-auto reveal" data-reveal>
+      <p class="uppercase tracking-[0.2em] text-xs font-semibold" style="color:var(--rosegold);">Recent Work</p>
+      <h2 class="font-display font-bold text-3xl md:text-4xl mt-3" style="color:var(--navy);">A Peek Into Our Recent Setups</h2>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-3 mt-8">
+      <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-gold/40 active" data-filter="all" onclick="filterGallery('all', this)">All</button>
+      <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-gold/40" data-filter="birthday" onclick="filterGallery('birthday', this)">Birthday</button>
+      <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-gold/40" data-filter="wedding" onclick="filterGallery('wedding', this)">Wedding</button>
+      <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-gold/40" data-filter="babyshower" onclick="filterGallery('babyshower', this)">Baby Shower</button>
+      <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-gold/40" data-filter="anniversary" onclick="filterGallery('anniversary', this)">Anniversary</button>
+    </div>
+
+    <div id="galleryGrid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-5 mt-10">
+      <div class="gallery-item swatch h-56 reveal" data-reveal data-cat="birthday" data-label="Unicorn Theme Birthday" style="background:url('https://images.pexels.com/photos/34008663/pexels-photo-34008663.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+      <div class="gallery-item swatch h-56 reveal" data-reveal data-cat="wedding" data-label="Haldi Ceremony Setup" style="background:url('https://images.pexels.com/photos/32516211/pexels-photo-32516211.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+      <div class="gallery-item swatch h-56 reveal" data-reveal data-cat="babyshower" data-label="Gender Reveal Backdrop" style="background:url('https://images.pexels.com/photos/34154245/pexels-photo-34154245.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+      <div class="gallery-item swatch h-56 reveal" data-reveal data-cat="anniversary" data-label="25th Anniversary Candlelight" style="background:url('https://images.pexels.com/photos/19763210/pexels-photo-19763210.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+      <div class="gallery-item swatch h-56 reveal" data-reveal data-cat="wedding" data-label="Mandap &amp; Stage Decor" style="background:url('https://images.pexels.com/photos/33417236/pexels-photo-33417236.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+      <div class="gallery-item swatch h-56 reveal" data-reveal data-cat="birthday" data-label="18th Milestone Birthday" style="background:url('https://images.pexels.com/photos/1543762/pexels-photo-1543762.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+    </div>
+    <p class="text-center text-xs text-gray-400 mt-6">* Sample stock photography shown — swap in your own event photos before launch for the best results.</p>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="py-20 px-5 md:px-8" style="background:var(--navy);">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto reveal" data-reveal>
+        <p class="uppercase tracking-[0.2em] text-xs font-semibold" style="color:var(--gold-soft);">Testimonials</p>
+        <h2 class="font-display font-bold text-3xl md:text-4xl mt-3 text-white">What Our Families Say</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 mt-12">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 reveal" data-reveal>
+          <div class="flex gap-1 mb-3">★★★★★</div>
+          <p class="text-white/80 text-sm">"They transformed our living room into a dreamy anniversary setup. Every detail, down to the fairy lights, felt personal."</p>
+          <div class="flex items-center gap-3 mt-5">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm text-white" style="background:var(--rosegold);">RM</div>
+            <div><p class="text-white text-sm font-medium">Riya &amp; Manav</p><p class="text-white/50 text-xs">Anniversary, Jaipur</p></div>
+          </div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 reveal" data-reveal>
+          <div class="flex gap-1 mb-3">★★★★★</div>
+          <p class="text-white/80 text-sm">"Our daughter's unicorn birthday was straight out of Pinterest. Setup was done two hours before guests arrived, exactly as promised."</p>
+          <div class="flex items-center gap-3 mt-5">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm text-white" style="background:var(--gold);">SK</div>
+            <div><p class="text-white text-sm font-medium">Sonal Kapoor</p><p class="text-white/50 text-xs">Birthday, Jaipur</p></div>
+          </div>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 reveal" data-reveal>
+          <div class="flex gap-1 mb-3">★★★★★</div>
+          <p class="text-white/80 text-sm">"From Haldi to the wedding stage, the whole team was punctual, professional and made everything so much less stressful for us."</p>
+          <div class="flex items-center gap-3 mt-5">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm text-white" style="background:var(--navy-light);">AP</div>
+            <div><p class="text-white text-sm font-medium">Ankit &amp; Priya</p><p class="text-white/50 text-xs">Wedding, Udaipur</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="px-5 md:px-8 py-16">
+    <div class="max-w-5xl mx-auto rounded-3xl px-8 py-12 text-center reveal" data-reveal style="background:linear-gradient(135deg,var(--gold-soft),var(--rosegold));">
+      <h2 class="font-display font-bold text-2xl md:text-4xl" style="color:var(--navy);">Planning a Party Soon? Get a Free Quote Today!</h2>
+      <p class="mt-3 text-sm md:text-base" style="color:var(--navy);opacity:.8;">Tell us your date and vision — we'll take care of the rest.</p>
+      <button onclick="goTo('contact')" class="mt-7 px-8 py-3.5 rounded-full font-semibold" style="background:var(--navy);color:white;">Get Free Quote</button>
+    </div>
+  </section>
+
+  <div class="garland"></div>
+</main>
+
+<!-- ===================== ABOUT PAGE ===================== -->
+<main id="about" class="page">
+
+  <section class="drape-top px-5 md:px-8 pt-20 pb-16 text-center" style="background:linear-gradient(160deg, var(--navy), var(--navy-light));">
+    <p class="uppercase tracking-[0.25em] text-xs font-semibold" style="color:var(--gold-soft);">About Us</p>
+    <h1 class="font-display font-bold text-4xl md:text-5xl mt-4 text-white">The Story Behind Every Setup</h1>
+    <p class="mt-4 text-white/70 max-w-xl mx-auto text-sm md:text-base">We don't just decorate venues — we build the backdrop to your best memories.</p>
+  </section>
+  <div class="garland" style="background-color:var(--cream);"></div>
+
+  <section class="max-w-6xl mx-auto px-5 md:px-8 py-16 grid md:grid-cols-2 gap-12 items-center">
+    <div class="reveal" data-reveal>
+      <p class="uppercase tracking-[0.2em] text-xs font-semibold" style="color:var(--rosegold);">Our Story</p>
+      <h2 class="font-display font-bold text-3xl mt-3" style="color:var(--navy);">Born From a Love of Celebrations</h2>
+      <p class="mt-4 text-gray-600 text-sm md:text-base leading-relaxed">
+        Aapke Business Ka Naam started with a simple belief — that every celebration, big or small, deserves to feel magical. What began as decorating birthdays for family and friends has grown into a full-service studio trusted for weddings, baby showers, anniversaries and everything in between.
+      </p>
+      <p class="mt-4 text-gray-600 text-sm md:text-base leading-relaxed">
+        Today, our decorators, designers and setup crew work as one team on your special day — combining creativity with the kind of punctuality your guests will actually notice.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 gap-4 reveal" data-reveal>
+      <div class="swatch h-44" data-label="Our Studio" style="background:url('https://images.pexels.com/photos/7548036/pexels-photo-7548036.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+      <div class="swatch h-44 mt-8" data-label="Setup in Progress" style="background:url('https://images.pexels.com/photos/14395559/pexels-photo-14395559.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+    </div>
+  </section>
+
+  <section class="py-16 px-5 md:px-8" style="background:var(--blush);">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+      <div class="bg-white rounded-2xl p-8 reveal" data-reveal>
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:var(--blush);">
+          <svg width="20" height="20" fill="none" stroke="var(--rosegold)" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl" style="color:var(--navy);">Our Mission</h3>
+        <p class="text-gray-600 text-sm mt-2">To make stress-free, beautifully crafted celebrations accessible to every family — with honest pricing and dependable service.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 reveal" data-reveal>
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:var(--blush);">
+          <svg width="20" height="20" fill="none" stroke="var(--rosegold)" stroke-width="2"><path d="M12 2l2.4 6.9H22l-5.8 4.3 2.2 7L12 16l-6.4 4.2 2.2-7L2 8.9h7.6z"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl" style="color:var(--navy);">Our Vision</h3>
+        <p class="text-gray-600 text-sm mt-2">To be the most trusted decoration studio in every city we serve — known equally for creativity and reliability.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-5 md:px-8 py-20">
+    <div class="text-center max-w-xl mx-auto reveal" data-reveal>
+      <p class="uppercase tracking-[0.2em] text-xs font-semibold" style="color:var(--rosegold);">How We Work</p>
+      <h2 class="font-display font-bold text-3xl mt-3" style="color:var(--navy);">From Idea to Setup, in Four Steps</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+      <div class="text-center reveal" data-reveal>
+        <div class="w-14 h-14 rounded-full mx-auto flex items-center justify-center font-display font-bold text-lg" style="background:var(--gold-soft);color:var(--navy);">1</div>
+        <h3 class="font-semibold mt-4" style="color:var(--navy);">Choose Your Theme</h3>
+        <p class="text-xs text-gray-500 mt-2">Browse our styles or share your own inspiration.</p>
+      </div>
+      <div class="text-center reveal" data-reveal>
+        <div class="w-14 h-14 rounded-full mx-auto flex items-center justify-center font-display font-bold text-lg" style="background:var(--gold-soft);color:var(--navy);">2</div>
+        <h3 class="font-semibold mt-4" style="color:var(--navy);">Customize &amp; Get Quote</h3>
+        <p class="text-xs text-gray-500 mt-2">We tailor the setup to your space, guest count and budget.</p>
+      </div>
+      <div class="text-center reveal" data-reveal>
+        <div class="w-14 h-14 rounded-full mx-auto flex items-center justify-center font-display font-bold text-lg" style="background:var(--gold-soft);color:var(--navy);">3</div>
+        <h3 class="font-semibold mt-4" style="color:var(--navy);">We Setup On-Time</h3>
+        <p class="text-xs text-gray-500 mt-2">Our crew arrives early and completes setup before you need it.</p>
+      </div>
+      <div class="text-center reveal" data-reveal>
+        <div class="w-14 h-14 rounded-full mx-auto flex items-center justify-center font-display font-bold text-lg" style="background:var(--gold-soft);color:var(--navy);">4</div>
+        <h3 class="font-semibold mt-4" style="color:var(--navy);">Enjoy Your Party!</h3>
+        <p class="text-xs text-gray-500 mt-2">You celebrate. We handle the teardown and cleanup after.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="garland garland-rose" style="background-color:var(--blush);"></div>
+
+  <section class="py-20 px-5 md:px-8" style="background:var(--blush);">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center max-w-xl mx-auto reveal" data-reveal>
+        <p class="uppercase tracking-[0.2em] text-xs font-semibold" style="color:var(--rosegold);">Our Team</p>
+        <h2 class="font-display font-bold text-3xl mt-3" style="color:var(--navy);">The People Behind the Magic</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        <div class="bg-white rounded-2xl p-6 text-center card-hover reveal" data-reveal>
+          <div class="w-16 h-16 rounded-full mx-auto" style="background:linear-gradient(135deg,#C9A227,#B76E79);"></div>
+          <h3 class="font-semibold mt-4" style="color:var(--navy);">Founder &amp; Lead Designer</h3>
+          <p class="text-xs text-gray-500">Concept &amp; theme design</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 text-center card-hover reveal" data-reveal>
+          <div class="w-16 h-16 rounded-full mx-auto" style="background:linear-gradient(135deg,#232a52,#E4C766);"></div>
+          <h3 class="font-semibold mt-4" style="color:var(--navy);">Setup Crew Lead</h3>
+          <p class="text-xs text-gray-500">On-ground execution</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 text-center card-hover reveal" data-reveal>
+          <div class="w-16 h-16 rounded-full mx-auto" style="background:linear-gradient(135deg,#FBE4E4,#B76E79);"></div>
+          <h3 class="font-semibold mt-4" style="color:var(--navy);">Client Experience</h3>
+          <p class="text-xs text-gray-500">Bookings &amp; coordination</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 text-center card-hover reveal" data-reveal>
+          <div class="w-16 h-16 rounded-full mx-auto" style="background:linear-gradient(135deg,#E4C766,#232a52);"></div>
+          <h3 class="font-semibold mt-4" style="color:var(--navy);">Floral &amp; Prop Stylist</h3>
+          <p class="text-xs text-gray-500">Florals, props &amp; styling</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-5 md:px-8 py-16 text-center">
+    <button onclick="goTo('contact')" class="btn-gold px-8 py-3.5 rounded-full font-semibold">Let's Plan Your Celebration</button>
+  </section>
+</main>
+
+<!-- ===================== SERVICES PAGE ===================== -->
+<main id="services" class="page">
+
+  <section class="drape-top px-5 md:px-8 pt-20 pb-16 text-center" style="background:linear-gradient(160deg, var(--navy), var(--navy-light));">
+    <p class="uppercase tracking-[0.25em] text-xs font-semibold" style="color:var(--gold-soft);">Our Services</p>
+    <h1 class="font-display font-bold text-4xl md:text-5xl mt-4 text-white">Decoration for Every Occasion</h1>
+    <p class="mt-4 text-white/70 max-w-xl mx-auto text-sm md:text-base">Pick a category below, or tell us your event and we'll build a custom package.</p>
+  </section>
+  <div class="garland" style="background-color:var(--cream);"></div>
+
+  <section class="max-w-6xl mx-auto px-5 md:px-8 py-16 grid md:grid-cols-2 gap-8">
+
+    <div class="bg-white rounded-2xl overflow-hidden border border-gold/10 card-hover reveal" data-reveal>
+      <div class="h-40" style="background:url('https://images.pexels.com/photos/34008663/pexels-photo-34008663.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+      <div class="p-7">
+        <h3 class="font-display font-bold text-xl" style="color:var(--navy);">Birthday Party Decoration</h3>
+        <p class="text-sm text-gray-600 mt-2">Kids' theme parties, milestone 18th/21st birthdays, balloon arches and photo-ready backdrops.</p>
+        <ul class="mt-4 space-y-1.5 text-sm text-gray-600">
+          <li>• Custom character &amp; theme setups</li>
+          <li>• Balloon arches &amp; garlands</li>
+          <li>• Personalized backdrop with name/age</li>
+          <li>• Table &amp; return-gift styling</li>
+        </ul>
+        <button onclick="goTo('contact')" class="btn-outline mt-6 px-5 py-2.5 rounded-full text-sm font-medium">Get Quote</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl overflow-hidden border border-gold/10 card-hover reveal" data-reveal>
+      <div class="h-40" style="background:url('https://images.pexels.com/photos/34079355/pexels-photo-34079355.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+      <div class="p-7">
+        <h3 class="font-display font-bold text-xl" style="color:var(--navy);">Weddings &amp; Pre-Wedding Events</h3>
+        <p class="text-sm text-gray-600 mt-2">Haldi, Mehendi, Ring Ceremony, and full mandap, canopy &amp; stage decoration.</p>
+        <ul class="mt-4 space-y-1.5 text-sm text-gray-600">
+          <li>• Haldi &amp; Mehendi themed setups</li>
+          <li>• Ring ceremony stage decor</li>
+          <li>• Mandap, canopy &amp; entrance decor</li>
+          <li>• Floral, drape &amp; lighting design</li>
+        </ul>
+        <button onclick="goTo('contact')" class="btn-outline mt-6 px-5 py-2.5 rounded-full text-sm font-medium">Get Quote</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl overflow-hidden border border-gold/10 card-hover reveal" data-reveal>
+      <div class="h-40" style="background:url('https://images.pexels.com/photos/33158035/pexels-photo-33158035.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+      <div class="p-7">
+        <h3 class="font-display font-bold text-xl" style="color:var(--navy);">Baby Shower &amp; Gender Reveal</h3>
+        <p class="text-sm text-gray-600 mt-2">Soft pastel palettes, customized props and balloon backdrops for the mom-to-be.</p>
+        <ul class="mt-4 space-y-1.5 text-sm text-gray-600">
+          <li>• Pastel balloon backdrops</li>
+          <li>• Gender reveal pop &amp; confetti setups</li>
+          <li>• Custom props &amp; welcome boards</li>
+          <li>• Seating &amp; dessert table styling</li>
+        </ul>
+        <button onclick="goTo('contact')" class="btn-outline mt-6 px-5 py-2.5 rounded-full text-sm font-medium">Get Quote</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl overflow-hidden border border-gold/10 card-hover reveal" data-reveal>
+      <div class="h-40" style="background:url('https://images.pexels.com/photos/1368707/pexels-photo-1368707.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+      <div class="p-7">
+        <h3 class="font-display font-bold text-xl" style="color:var(--navy);">Anniversary &amp; Romantic Setups</h3>
+        <p class="text-sm text-gray-600 mt-2">Candlelight dinners, in-room decorations and thoughtful surprise setups.</p>
+        <ul class="mt-4 space-y-1.5 text-sm text-gray-600">
+          <li>• Candlelight dinner arrangements</li>
+          <li>• In-room &amp; balcony decoration</li>
+          <li>• Surprise proposal setups</li>
+          <li>• Rose petals, fairy lights &amp; florals</li>
+        </ul>
+        <button onclick="goTo('contact')" class="btn-outline mt-6 px-5 py-2.5 rounded-full text-sm font-medium">Get Quote</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl overflow-hidden border border-gold/10 card-hover reveal" data-reveal>
+      <div class="h-40" style="background:url('https://images.pexels.com/photos/976862/pexels-photo-976862.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+      <div class="p-7">
+        <h3 class="font-display font-bold text-xl" style="color:var(--navy);">Corporate &amp; Custom Events</h3>
+        <p class="text-sm text-gray-600 mt-2">Product launches, office celebrations, and seasonal or festive workplace parties.</p>
+        <ul class="mt-4 space-y-1.5 text-sm text-gray-600">
+          <li>• Product launch stage &amp; branding decor</li>
+          <li>• Office festive &amp; seasonal decoration</li>
+          <li>• Award night &amp; team celebration setups</li>
+          <li>• Custom branded backdrops</li>
+        </ul>
+        <button onclick="goTo('contact')" class="btn-outline mt-6 px-5 py-2.5 rounded-full text-sm font-medium">Get Quote</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl overflow-hidden border border-gold/10 card-hover reveal" data-reveal>
+      <div class="h-40" style="background:url('https://images.pexels.com/photos/2263435/pexels-photo-2263435.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;"></div>
+      <div class="p-7">
+        <h3 class="font-display font-bold text-xl" style="color:var(--navy);">Add-on Services</h3>
+        <p class="text-sm text-gray-600 mt-2">The finishing touches that make any setup complete.</p>
+        <ul class="mt-4 space-y-1.5 text-sm text-gray-600">
+          <li>• Custom cake tables</li>
+          <li>• Ambient &amp; string lighting</li>
+          <li>• Neon signboards &amp; name lights</li>
+          <li>• Photo booth &amp; props corner</li>
+        </ul>
+        <button onclick="goTo('contact')" class="btn-outline mt-6 px-5 py-2.5 rounded-full text-sm font-medium">Get Quote</button>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="px-5 md:px-8 py-16">
+    <div class="max-w-5xl mx-auto rounded-3xl px-8 py-12 text-center reveal" data-reveal style="background:linear-gradient(135deg,var(--gold-soft),var(--rosegold));">
+      <h2 class="font-display font-bold text-2xl md:text-4xl" style="color:var(--navy);">Not Sure Which Package Fits Your Event?</h2>
+      <p class="mt-3 text-sm md:text-base" style="color:var(--navy);opacity:.8;">Share your event details with us and we'll recommend the perfect setup.</p>
+      <button onclick="goTo('contact')" class="mt-7 px-8 py-3.5 rounded-full font-semibold" style="background:var(--navy);color:white;">Talk to Us</button>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== CONTACT PAGE ===================== -->
+<main id="contact" class="page">
+
+  <section class="drape-top px-5 md:px-8 pt-20 pb-16 text-center" style="background:linear-gradient(160deg, var(--navy), var(--navy-light));">
+    <p class="uppercase tracking-[0.25em] text-xs font-semibold" style="color:var(--gold-soft);">Contact Us</p>
+    <h1 class="font-display font-bold text-4xl md:text-5xl mt-4 text-white">Let's Plan Your Celebration</h1>
+    <p class="mt-4 text-white/70 max-w-xl mx-auto text-sm md:text-base">Fill in a few details and we'll get back to you with a free quote within 24 hours.</p>
+  </section>
+  <div class="garland" style="background-color:var(--cream);"></div>
+
+  <section class="max-w-6xl mx-auto px-5 md:px-8 py-16 grid lg:grid-cols-5 gap-10">
+
+    <!-- FORM -->
+    <form class="lg:col-span-3 bg-white rounded-2xl p-7 md:p-9 shadow-sm border border-gold/10 reveal" data-reveal onsubmit="handleSubmit(event)">
+      <h3 class="font-display font-bold text-2xl mb-6" style="color:var(--navy);">Request a Free Quote</h3>
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label class="text-sm font-medium" style="color:var(--navy);">Full Name</label>
+          <input required type="text" placeholder="Your name" class="mt-1.5 w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm">
+        </div>
+        <div>
+          <label class="text-sm font-medium" style="color:var(--navy);">Phone / WhatsApp Number</label>
+          <input required type="tel" placeholder="+91 98765 43210" class="mt-1.5 w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm">
+        </div>
+        <div>
+          <label class="text-sm font-medium" style="color:var(--navy);">Event Date</label>
+          <input required type="date" class="mt-1.5 w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm">
+        </div>
+        <div>
+          <label class="text-sm font-medium" style="color:var(--navy);">Event Type</label>
+          <select required class="mt-1.5 w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm bg-white">
+            <option value="">Select event type</option>
+            <option>Birthday Party</option>
+            <option>Wedding / Ring Ceremony</option>
+            <option>Baby Shower / Gender Reveal</option>
+            <option>Anniversary</option>
+            <option>Corporate / Custom Event</option>
+          </select>
+        </div>
+        <div class="sm:col-span-2">
+          <label class="text-sm font-medium" style="color:var(--navy);">City / Location</label>
+          <input required type="text" placeholder="e.g. Jaipur, Rajasthan" class="mt-1.5 w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm">
+        </div>
+        <div class="sm:col-span-2">
+          <label class="text-sm font-medium" style="color:var(--navy);">Special Message</label>
+          <textarea rows="4" placeholder="Tell us about your vision, guest count, budget, or anything else..." class="mt-1.5 w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="btn-gold w-full sm:w-auto mt-7 px-8 py-3.5 rounded-full font-semibold">Submit Request</button>
+      <p id="formNote" class="text-sm mt-4 hidden" style="color:var(--rosegold);">Thank you! We'll reach out within 24 hours. 🎉</p>
+    </form>
+
+    <!-- INFO -->
+    <div class="lg:col-span-2 space-y-6">
+      <div class="bg-white rounded-2xl p-6 border border-gold/10 reveal" data-reveal>
+        <h4 class="font-semibold" style="color:var(--navy);">Call or WhatsApp</h4>
+        <p class="text-sm text-gray-600 mt-1">+91 98765 43210</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 border border-gold/10 reveal" data-reveal>
+        <h4 class="font-semibold" style="color:var(--navy);">Email</h4>
+        <p class="text-sm text-gray-600 mt-1">hello@aapkebusiness.com</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 border border-gold/10 reveal" data-reveal>
+        <h4 class="font-semibold" style="color:var(--navy);">Office</h4>
+        <p class="text-sm text-gray-600 mt-1">Shop No. 12, Malviya Nagar, Jaipur, Rajasthan – 302017</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 border border-gold/10 reveal" data-reveal>
+        <h4 class="font-semibold" style="color:var(--navy);">Business Hours</h4>
+        <div class="text-sm text-gray-600 mt-2 space-y-1">
+          <div class="flex justify-between"><span>Monday – Saturday</span><span>9:00 AM – 8:00 PM</span></div>
+          <div class="flex justify-between"><span>Sunday</span><span>10:00 AM – 6:00 PM (by appointment)</span></div>
+        </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-gold/10 reveal" data-reveal>
+        <iframe title="Business Location Map" class="w-full h-52" style="border:0;" loading="lazy"
+          src="https://www.google.com/maps?q=Jaipur,Rajasthan&output=embed"></iframe>
+      </div>
+      <p class="text-xs text-gray-400">* Replace the map embed link above with your exact office location from Google Maps → Share → Embed a map.</p>
+    </div>
+  </section>
+</main>
+
+<!-- WHATSAPP STICKY BUTTON -->
+<a href="https://wa.me/919876543210?text=Hi!%20I'd%20like%20a%20free%20quote%20for%20my%20event." target="_blank" rel="noopener"
+   class="whatsapp-fab fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center"
+   style="background:#25D366;" aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 004.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.92C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.4 1.3-1.93 1.38-.49.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.08.99-2.37.26-.28.57-.35.76-.35h.55c.18 0 .42-.02.65.5.24.56.82 1.94.89 2.08.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.28-.12.56.16.28.71 1.18 1.53 1.91 1.05.94 1.94 1.24 2.22 1.38.28.14.44.12.61-.07.16-.19.7-.82.89-1.1.19-.28.37-.23.63-.14.26.09 1.64.78 1.92.92.28.14.47.21.53.33.07.12.07.68-.17 1.36z"/></svg>
+</a>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="px-5 md:px-8 pt-16 pb-8" style="background:var(--navy);">
+  <div class="max-w-7xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-10 text-white/70 text-sm">
+    <div>
+      <p class="font-display font-bold text-xl text-white mb-3">Aapke Business Ka Naam</p>
+      <p class="text-white/60">Custom party &amp; wedding decoration, designed and setup with care.</p>
+    </div>
+    <div>
+      <p class="font-semibold text-white mb-3">Quick Links</p>
+      <div class="flex flex-col gap-2">
+        <button class="text-left hover:text-white" onclick="goTo('home')">Home</button>
+        <button class="text-left hover:text-white" onclick="goTo('about')">About Us</button>
+        <button class="text-left hover:text-white" onclick="goTo('services')">Services</button>
+        <button class="text-left hover:text-white" onclick="goTo('contact')">Contact</button>
+      </div>
+    </div>
+    <div>
+      <p class="font-semibold text-white mb-3">Services</p>
+      <div class="flex flex-col gap-2 text-white/60">
+        <span>Birthday Parties</span>
+        <span>Weddings &amp; Pre-Wedding</span>
+        <span>Baby Showers</span>
+        <span>Anniversaries</span>
+      </div>
+    </div>
+    <div>
+      <p class="font-semibold text-white mb-3">Contact</p>
+      <div class="flex flex-col gap-2 text-white/60">
+        <span>+91 98765 43210</span>
+        <span>hello@aapkebusiness.com</span>
+        <span>Malviya Nagar, Jaipur</span>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto border-t border-white/10 mt-10 pt-6 text-white/40 text-xs flex flex-col sm:flex-row justify-between gap-2">
+    <span>© 2026 Aapke Business Ka Naam. All rights reserved.</span>
+    <span>Made with 🎉 for celebrations everywhere.</span>
+  </div>
+</footer>
+
+<script>
+  function goTo(pageId){
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.toggle('active', l.dataset.page === pageId));
+    document.getElementById('mobileMenu').classList.add('hidden');
+    window.scrollTo({top:0, behavior:'instant'});
+    initReveal();
+  }
+
+  function toggleMobileMenu(){
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  }
+
+  function filterGallery(cat, btn){
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.remove('active');
+      b.style.background = 'transparent';
+      b.style.color = 'var(--navy)';
+    });
+    btn.classList.add('active');
+    btn.style.background = 'var(--gold)';
+    btn.style.color = 'var(--navy)';
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      const show = (cat === 'all') || (item.dataset.cat === cat);
+      item.style.display = show ? '' : 'none';
+    });
+  }
+
+  function handleSubmit(e){
+    e.preventDefault();
+    document.getElementById('formNote').classList.remove('hidden');
+    e.target.reset();
+  }
+
+  function initReveal(){
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+    document.querySelectorAll('[data-reveal]:not(.in)').forEach(el => obs.observe(el));
+  }
+  initReveal();
+
+  // style default filter button active state on load
+  document.addEventListener('DOMContentLoaded', () => {
+    const activeBtn = document.querySelector('.filter-btn.active');
+    if(activeBtn){ activeBtn.style.background = 'var(--gold)'; activeBtn.style.color = 'var(--navy)'; }
+  });
+</script>
+
+</body>
+</html>
